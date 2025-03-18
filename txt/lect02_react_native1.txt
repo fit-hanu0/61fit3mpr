@@ -1,0 +1,474 @@
+61FIT3MPR - Spring 2025
+
+Lecture 02
+
+React Native (part 1)
+
+Contents
+• Overview of mobile application development.
+
+• Introduction to React Native and comparison with other technologies.
+• Setting up the development environment
+(Node.js, Expo CLI, React Native CLI).
+
+• Creating the first React Native app with Expo.
+• Core components
+• Styling
+• Simple event handling
+•
+
+onChangeText
+
+•
+
+onPress
+
+What is Mobile Application Development?
+• Mobile application development is the process of creating
+software applications that run on mobile devices like
+smartphones and tablets.
+
+• Platforms :The two main platforms
+for mobile apps are Android and
+iOS.
+• Android apps are typically
+developed using Java or Kotlin,
+while iOS apps are developed
+using Swift or Objective-C
+
+Types of Apps
+• Different types of mobile apps offer unique features and
+functionality. Understanding these types can help developers
+choose the right approach for developing a mobile app.
+
+Types of Apps
+
+Native Apps
+Built specifically for one
+platform (either
+Android or iOS) using
+platform-specific
+languages and tools.
+
+Cross-Platform Apps
+Developed to work on
+multiple platforms
+using a single
+codebase, often with
+frameworks like React
+Native or Flutter.
+
+Hybrid Apps
+Combine elements of
+both native and web
+apps, using
+technologies like
+HTML5, CSS, and
+JavaScript.
+
+Progressive Web Apps
+(PWAs)
+Web applications that
+provide a mobile applike experience through
+a web browser
+
+Types of Apps
+Native Apps
+
+Cross-Platform Apps
+
+Pros:
+• Best runtime
+performance
+• Direct access to device
+APIs
+
+Pros:
+• Single code base for
+multiple platforms
+• Easy to build and
+maintain your app
+
+Cons:
+• Higher costs when
+building and
+maintaining your app
+• Multiple code-bases
+for each platform
+
+Cons:
+• Dependent on bridges
+and libraries for native
+device features
+• Performance
+limitations due to
+bridging
+
+Hybrid Apps
+Pros:
+• Shared code base
+between web and
+mobile apps
+• Using web
+development skillset
+for building mobile
+apps
+Cons:
+• Lower performance
+compared to native
+apps
+• Limited support for
+native device features
+
+Progressive Web Apps
+(PWAs)
+Pros:
+• Same app is available
+both for web and
+mobile
+• No installation
+required, accessible
+through a URL
+
+Cons:
+• Limited support for
+native device features
+• App capabilities
+depend on the
+browser in use
+
+What is React Native?
+React.js
+
+React Native
+
+Real Native Mobile Apps
+
+A JavaScript library for
+building user interfaces
+
+A collection of “special”
+React Component
+
+IOS
+Android
+
+Typically used for web
+development
+
+Components are
+compiled to native UI
+
+It’s actually react-dom
+that adds web support
+
+Native platform APIs
+exposed to JS
+
+React is platformagnostic
+
+React Native is like react
+dom; Connect React to a
+specific platform
+
+Why React Native?
+•
+•
+•
+•
+
+Faster development speed
+Highly reusable code and easy to find developers that can use React
+
+Apps run across multiple platforms
+Possible to ship over the air updates bypassing App Store / Play Store
+
+Expo CLI vs React Native CLI
+Expo CLI and React Native CLI are two different tools used for developing React Native
+applications, each with its own strengths and use cases.
+
+Expo CLI (“Expo”)
+
+You can switch (“eject”) any time
+
+React Native CLI
+
+Third-party service (free!)
+
+By the React Native team
+& community
+
+"Managed app
+development"
+
+Bare-bone development
+
+Very convenient, less
+friction
+
+Fewer convenience
+features
+
+Can leave the ecosystem
+any time
+
+Can leave the ecosystem
+any time
+
+Start a new React Native project with Expo
+•
+
+Expo is a production-grade React Native Framework. Expo provides developer tooling
+that makes developing apps easier, such as file-based routing, a standard library of native
+
+modules, and much more.
+
+•
+
+Expo's Framework is free and open source, with an active community on GitHub and
+Discord. The Expo team works in close collaboration with the React Native team at Meta
+to bring the latest React Native features to the Expo SDK.
+
+•
+
+The team at Expo also provides Expo Application Services (EAS), an optional set of
+services that complements Expo, the Framework, in each step of the development
+process.
+
+•
+
+To create a new Expo project, run the following in your terminal:
+
+npx create-expo-app@latest <app-name>
+
+How to create?
+
+Step 1: Make sure that your computer has
+already installed Nodejs
+If not, you can search for nodejs on
+Google and download the newest version
+(now is v22.13.0) Node.js — Run
+JavaScript Everywhere
+
+How to create?
+Step 2: Open the command line and run:
+npx create-expo-app@latest <app-name>
+
+Successfully Installation
+
+What’s inside a React Native project?
+.gitignore:
+.expo
+.vscode
+node_modules:
+#Holds 3rd party packages
+assets:
+#Holds images used inside app
+package.json, package-lock.json:
+#Holds dependencies, script commands, etc.
+app.json:
+#Configuration settings
+App.js:
+#The real code
+
+Run on Website
+Step 1: Install dependencies
+npx expo install
+react-dom reactnative-web
+@expo/metro-runtime
+Step 2: Run
+npm run web
+
+Expo Go
+❖ Provided by Expo Technologies, Inc.
+❖ Free, open-source sandbox for learning
+and experimenting with React Native on
+mobile devices
+
+Run on Expo Go
+❖ Download from App Store (iOS) or
+Play Store (Android)
+
+Run on Expo Go
+❖ To run your app on Expo Go:
+○ Open terminal
+○ Type “npx expo start”
+❖ Expo Developing Server will be started
+as a QR code generated to be scanned.
+
+Run on Expo Go
+❖ Using mobile devices to scan QR code
+○ On Android: click “Scan QR code”
+○ On iOS: Camera > Open the link
+
+A look under the hood
+import React from 'react';
+import {Text} from 'react-native';
+const Cat = () => {
+return <Text>Hello, I am your cat!</Text>;
+};
+export default Cat;
+
+Only JSX and Components are compiled, not
+JavaScript logic.
+
+A look under the hood
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+const Cat = () => {
+const name = 'Maru';
+return (
+<View style={styles.container}>
+<Text>Hello, I am {name}!</Text>
+</View>
+);
+};
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+justifyContent: 'center',
+alignItems: 'center',
+},
+});
+export default Cat;
+
+Let’s analyze the HelloWorld app!
+• There’s a function component called
+• This component acts as the root component by default.
+
+• We can see other components:
+,
+,
+• Also note the
+attribute attached to the
+
+component
+
+Native components
+• In React Native, you can’t use HTML tags in JSX code.
+• Unlike React where your application runs on the browser, React Native
+application runs on mobile devices.
+• There’s no DOM to work with.
+
+• Mobile UI elements are “exposed” as React Native
+components.
+• Think of how you can read user inputs in Java because the system’s
+keyboard is exposed as the
+object.
+
+React Native components are compiled...
+• React Native’s built-in components are compiled into actual
+iOS or Android code.
+
+React Native components documentation
+https://reactnative.dev/docs/components-and-apis
+
+Building app UI by combining Core components
+
+“Core” Components
+(Built Into React Native)
+
+“Translation” to native UI widgets is provided by
+React Native
+
+Your UI & Custom Components
+
+Combination of “Core” components & other
+built-in components
+
+React Native is different from HTML
+
+• Each core component has a
+different role.
+E.g. Only
+component can hold text strings.
+for laying out other components.
+
+is used as container
+
+Some important React Native components
+
+The Components landscape
+
+React Native styling
+
+There Is No CSS!
+
+Inline Styles
+
+StyleSheet Objects
+
+Written in JavaScript
+(i.e. in the JavaScript code files, next to the component code)
+Based on CSS syntax, but only a subset of properties & features is supported!
+
+React Native inline styling
+• A core component receives a styling object via the
+attribute.
+• Different properties require different types of values (string, integer...)
+• This styling is close to CSS but not exactly CSS.
+• You’ll get VSCode suggestions for property names.
+
+React Native StyleSheet object
+• Allows style re-use & better code readability
+
+Additional reading about styling
+• The official styling documentation
+• https://reactnative.dev/docs/style
+
+• An article about different ways of presenting colors
+• https://reactnative.dev/docs/colors
+
+• Each core component’s documentation lists all supported style
+properties. Example:
+• https://reactnative.dev/docs/view#style
+
+The
+
+component
+
+• A basic component for inputting text into the app via a keyboard
+• Important props (attributes):
+•
+•
+•
+•
+
+: set the predefined value for the text field
+: displays a placeholder text when the input is empty
+: set the function to call every time the text value changes
+: make the input editable or not (default:
+
+• Some other common props:
+
+)
+
+The
+
+component
+
+• A basic button that should render nicely on any platform.
+• Supports a minimal level of customization.
+
+• If more customization is needed,
+
+• Important props (attributes):
+•
+•
+•
+
+: the actual display text of the button
+: the event handling attribute
+: set the theme color for the button
+
+(renders differently on iOS and Android)
+
+• Other props:
+
+can be used instead.
+
+Layout with FlexBox
+
+Layout with FlexBox
+
+
